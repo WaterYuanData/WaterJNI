@@ -12,8 +12,8 @@ cmake_minimum_required(VERSION 3.4.1)
 
 # 指定头文件目录
 include_directories(${CMAKE_SOURCE_DIR}/bzip2)
-# 如何同时指定多个头文件目录?
-#include_directories(${CMAKE_SOURCE_DIR})
+# 同时指定多个头文件目录
+#include_directories(${CMAKE_SOURCE_DIR} ${CMAKE_SOURCE_DIR}/bzip2)
 
 # 在指定目录下查找源文件
 aux_source_directory(${CMAKE_SOURCE_DIR}/bzip2 bzip2_source)

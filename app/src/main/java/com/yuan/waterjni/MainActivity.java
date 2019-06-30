@@ -1,5 +1,6 @@
 package com.yuan.waterjni;
 
+import android.Manifest;
 import android.os.AsyncTask;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.yuan.waterjni.util.PermissonUtils;
 
 import java.io.File;
 
@@ -24,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.i(TAG, "onCreate: " + BuildConfig.VERSION_NAME);
+        String[] permissons = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
+        PermissonUtils.getInstance().checkAndRequestPermissions(this, permissons, 666);
         final TextView tv = findViewById(R.id.sample_text);
         tv.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
                         super.onPostExecute(s);
                         Log.i(TAG, "run: " + "生成差分包成功，用时:" + s + "ms"); // run: 生成差分包成功，用时:2946ms
                         Toast.makeText(MainActivity.this, "生成差分包成功，用时:" + s + "ms", Toast.LENGTH_SHORT).show();
+                        tv.setText(BuildConfig.VERSION_NAME);
                     }
                 }.execute("1", "2", "3", "go");
             }
@@ -94,7 +100,6 @@ public class MainActivity extends AppCompatActivity {
                 patch(old, tmp, patch);
                 long s3 = System.currentTimeMillis();
                 Toast.makeText(MainActivity.this, "差分包合并成功，用时:" + (s3 - s2) + "ms", Toast.LENGTH_SHORT).show();
-                tv.setText(BuildConfig.VERSION_NAME);
             }
         });
     }
