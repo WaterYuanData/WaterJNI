@@ -12,7 +12,7 @@ cmake_minimum_required(VERSION 3.4.1)
 
 # 指定头文件目录
 include_directories(${CMAKE_SOURCE_DIR}/bzip2)
-# 如何同时指定多个头文件目录
+# 如何同时指定多个头文件目录?
 #include_directories(${CMAKE_SOURCE_DIR})
 
 # 在指定目录下查找源文件
@@ -27,7 +27,6 @@ add_library( # Sets the name of the library.
         # Provides a relative path to your source file(s).
         bsdiff.c
         bspatch.c
-        bs.c
         ${bzip2_source}
         native-lib.cpp)
 

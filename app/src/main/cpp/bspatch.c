@@ -27,15 +27,14 @@
 #if 0
 __FBSDID("$FreeBSD: src/usr.bin/bsdiff/bspatch/bspatch.c,v 1.1 2005/08/06 01:59:06 cperciva Exp $");
 #endif
-
-#include <bzlib.h>
+#include <jni.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include <err.h>
 #include <unistd.h>
 #include <fcntl.h>
-
+#include "bzip2/bzlib.h"
 static off_t offtin(u_char *buf)
 {
 	off_t y;
