@@ -16,4 +16,20 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/diff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="拆分"
+        app:layout_constraintLeft_toLeftOf="@id/sample_text"
+        app:layout_constraintTop_toBottomOf="@id/sample_text" />
+
+    <Button
+        android:id="@+id/patch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="合并"
+        app:layout_constraintLeft_toLeftOf="@id/diff"
+        app:layout_constraintTop_toBottomOf="@id/diff" />
+
 </android.support.constraint.ConstraintLayout>

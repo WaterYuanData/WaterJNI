@@ -10,6 +10,14 @@ cmake_minimum_required(VERSION 3.4.1)
 # You can define multiple libraries, and CMake builds them for you.
 # Gradle automatically packages shared libraries with your APK.
 
+# 指定头文件目录
+include_directories(${CMAKE_SOURCE_DIR}/bzip2)
+# 如何同时指定多个头文件目录
+#include_directories(${CMAKE_SOURCE_DIR})
+
+# 在指定目录下查找源文件
+aux_source_directory(${CMAKE_SOURCE_DIR}/bzip2 bzip2_source)
+
 add_library( # Sets the name of the library.
         native-lib
 
@@ -17,6 +25,10 @@ add_library( # Sets the name of the library.
         SHARED
 
         # Provides a relative path to your source file(s).
+        bsdiff.c
+        bspatch.c
+        bs.c
+        ${bzip2_source}
         native-lib.cpp)
 
 # Searches for a specified prebuilt library and stores the path as a
@@ -30,6 +42,7 @@ find_library( # Sets the name of the path variable.
 
         # Specifies the name of the NDK library that
         # you want CMake to locate.
+        # 对应C:\Users\ran\AppData\Local\Android\Sdk\ndk-bundle\platforms\android-28\arch-arm\usr\lib\liblog.so
         log)
 
 # Specifies libraries CMake should link to your target library. You
